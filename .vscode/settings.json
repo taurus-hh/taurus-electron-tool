@@ -1,0 +1,24 @@
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue",
+    "typescript",
+    "typescriptreact"
+  ],
+  "search.exclude": {
+    ".git": true,
+    ".eslintcache": true,
+    "dist": true,
+    "build": true,
+    "bower_components": true,
+    "dll": true,
+    "flow-typed": true,
+    "release": true,
+    "node_modules": true,
+    "npm-debug.log.*": true,
+    "test/**/__snapshots__": true,
+    "yarn.lock": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

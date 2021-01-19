@@ -1,13 +1,14 @@
 import fs from 'fs-extra';
 import chalk from 'chalk';
-import { spawn } from "child_process";
+import util from 'util';
+import { spawn } from 'child_process';
 import inquirer from 'inquirer';
 import ora from 'ora';
 import symbols from 'log-symbols';
 import { Extractor } from '@taraus-he/tdunzip';
 import { downloadTemplate } from './download';
 export async function createProject(name: string) {
-  const projectName = process.cwd() + '/' + name;
+  const projectName = name ? process.cwd() + '/' + name : process.cwd();
   try {
     const exists = await fs.pathExists(projectName);
     if (exists) {
@@ -20,8 +21,8 @@ export async function createProject(name: string) {
             message: 'Please pick a preset:',
             name: 'preset',
             choices: [
-              "React Electron (react, typescript, eslint, prettier)",
-              "Vue Electron (Vue, typescript, eslint, prettier)",
+              'React Electron (react, typescript, eslint, prettier)',
+              'Vue Electron (Vue, typescript, eslint, prettier)',
             ],
           },
         ])
@@ -37,13 +38,28 @@ export async function createProject(name: string) {
             });
             await extractor.extract();
           }
-          const templateDir = projectName + '/' + 'react-electron-template-master';
+          const templateDir =
+            projectName + '/' + 'react-electron-template-master';
           await fs.copy(templateDir, projectName);
           await fs.remove(templateDir);
-          spawn("cd", [projectName]);
-          spawn("yarn", ["install"]);
-          initSpinner.text = chalk.green('The project create successfully');
+          initSpinner.text = chalk.green('🎉 The project create successfully!');
           initSpinner.succeed();
+          try {
+            process.chdir(name);
+            console.log(`\nNew directory: ${process.cwd()}\n`);
+            const ls = spawn('yarn', ['install']);
+            ls.stdout.on('data', (data) => {
+              console.log(`🚚 ${data.toString()}`);
+            });
+            ls.stderr.on('data', (data) => {
+              console.log(`⚓ ${data.toString()}`);
+            });
+            ls.on('close', () => {
+              console.log(`👉 To get started:\n$ ${chalk.yellow("cd " + name)}\n$ ${chalk.yellow('yarn install')}\n$ ${chalk.yellow('yarn run dev')}`);
+            });
+          } catch (err) {
+            console.error(`\n chdir: ${err}`);
+          }
         });
     }
   } catch (error) {

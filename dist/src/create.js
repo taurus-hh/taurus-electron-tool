@@ -55,7 +55,7 @@ function createProject(name) {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    projectName = process.cwd() + '/' + name;
+                    projectName = name ? process.cwd() + '/' + name : process.cwd();
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
@@ -73,17 +73,16 @@ function createProject(name) {
                                 message: 'Please pick a preset:',
                                 name: 'preset',
                                 choices: [
-                                    "React Electron (react, typescript, eslint, prettier)",
-                                    "Vue Electron (Vue, typescript, eslint, prettier)",
+                                    'React Electron (react, typescript, eslint, prettier)',
+                                    'Vue Electron (Vue, typescript, eslint, prettier)',
                                 ],
                             },
                         ])
                             .then(function (answers) { return __awaiter(_this, void 0, void 0, function () {
-                            var initSpinner, downloadResult, extractor, templateDir;
+                            var initSpinner, downloadResult, extractor, templateDir, ls;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
-                                        console.log(answers);
                                         initSpinner = ora_1.default(chalk_1.default.cyan('Initializing project. This might take a while...'));
                                         initSpinner.start();
                                         return [4 /*yield*/, download_1.downloadTemplate()];
@@ -105,10 +104,25 @@ function createProject(name) {
                                         return [4 /*yield*/, fs_extra_1.default.remove(templateDir)];
                                     case 5:
                                         _a.sent();
-                                        child_process_1.spawn("cd", [projectName]);
-                                        child_process_1.spawn("yarn", ["install"]);
-                                        initSpinner.text = chalk_1.default.green('The project create successfully');
+                                        initSpinner.text = chalk_1.default.green('🎉 The project create successfully!');
                                         initSpinner.succeed();
+                                        try {
+                                            process.chdir(name);
+                                            console.log("\nNew directory: " + process.cwd() + "\n");
+                                            ls = child_process_1.spawn('yarn', ['install']);
+                                            ls.stdout.on('data', function (data) {
+                                                console.log("\uD83D\uDE9A " + data.toString());
+                                            });
+                                            ls.stderr.on('data', function (data) {
+                                                console.log("\u2693 " + data.toString());
+                                            });
+                                            ls.on('close', function () {
+                                                console.log("\uD83D\uDC49 To get started:\n$ " + chalk_1.default.yellow("cd " + name) + "\n$ " + chalk_1.default.yellow('yarn install') + "\n$ " + chalk_1.default.yellow('yarn run dev') + "\n            ");
+                                            });
+                                        }
+                                        catch (err) {
+                                            console.error("\n chdir: " + err);
+                                        }
                                         return [2 /*return*/];
                                 }
                             });
