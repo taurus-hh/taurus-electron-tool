@@ -117,7 +117,7 @@ function createProject(name) {
                                                 console.log("\u2693 " + data.toString());
                                             });
                                             ls.on('close', function () {
-                                                console.log("\uD83D\uDC49 To get started:\n$ " + chalk_1.default.yellow("cd " + name) + "\n$ " + chalk_1.default.yellow('yarn install') + "\n$ " + chalk_1.default.yellow('yarn run dev') + "\n            ");
+                                                console.log("\uD83D\uDC49 To get started:\n$ " + chalk_1.default.yellow("cd " + name) + "\n$ " + chalk_1.default.yellow('yarn install') + "\n$ " + chalk_1.default.yellow('yarn run dev'));
                                             });
                                         }
                                         catch (err) {

@@ -1,11 +1,22 @@
 {
-    "name": "taurus",
-    "version": "1.0.0",
+    "name": "taurus-electron",
+    "version": "1.0.1-alpha",
     "description": "A tool create Electron Application that based React Typescript",
     "main": "./dist/index.js",
     "bin": {
         "taurus": "./bin/index.js"
     },
+    "keywords": [
+        "React",
+        "electron",
+        "tool",
+        "kit",
+        "typescript"
+    ],
+    "files": [
+        "bin",
+        "dist"
+    ],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc"
@@ -20,7 +31,7 @@
         "url": "https://github.com/Taraus-He/Taurus/issues"
     },
     "homepage": "https://github.com/Taraus-He/Taurus#readme",
-    "devDependencies": {
+    "dependencies": {
         "@taraus-he/tdunzip": "1.0.4",
         "@types/fs-extra": "^9.0.6",
         "@types/inquirer": "^7.3.1",
@@ -28,7 +39,6 @@
         "@types/update-notifier": "^5.0.0",
         "chalk": "^4.1.0",
         "commander": "^7.0.0",
-        "download": "^8.0.0",
         "fs-extra": "^9.0.1",
         "handlebars": "^4.7.6",
         "inquirer": "^7.3.3",
