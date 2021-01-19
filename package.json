@@ -6,6 +6,10 @@
   "bin": {
     "taurus": "./bin/index.js"
   },
+  "files": [
+    "bin",
+    "dist",
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"

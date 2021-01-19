@@ -1,6 +1,5 @@
 import fs from 'fs-extra';
 import chalk from 'chalk';
-import util from 'util';
 import { spawn } from 'child_process';
 import inquirer from 'inquirer';
 import ora from 'ora';
