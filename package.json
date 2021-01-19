@@ -1,6 +1,6 @@
 {
   "name": "taurus-electron",
-  "version": "1.0.1-alpha",
+  "version": "1.0.3-alpha",
   "description": "A tool create Electron Application that based React Typescript",
   "main": "./dist/index.js",
   "bin": {
@@ -14,8 +14,8 @@
     "typescript"
   ],
   "files": [
-    "bin/*.js",
-    "dist/**/*"
+    "bin",
+    "dist"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -4,8 +4,8 @@
     "target": "es5",                                /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */
     "module": "commonjs",                           /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
     "outDir": "dist",
-    "rootDir": "./",
     "lib": [ "ES2015" ],
+    "rootDir": "./src",
     /* Strict Type-Checking Options */
     "strict": true,                                 /* Enable all strict type-checking options. */
     /* Module Resolution Options */
@@ -16,6 +16,6 @@
     "skipLibCheck": true,                           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
   },
-  "include": ["./src/**/*", "index.ts"],
+  "include": ["./src/**/*", "src/index.ts"],
   "exclude": ["node_modules", "package.json"]
 }

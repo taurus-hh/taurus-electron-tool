@@ -1,8 +1,8 @@
 import program from "commander";
-import { update } from "./src/update";
-import { downloadTemplate } from "./src/download";
-import { createProject } from "./src/create";
-import pkg from "./package.json";
+import { update } from "./update";
+import { downloadTemplate } from "./download";
+import { createProject } from "./create";
+const pkg = require("../package.json");
 program.version(pkg.version, '-v, --version')
 program
 	.command('upgrade')

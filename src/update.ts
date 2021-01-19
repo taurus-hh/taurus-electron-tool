@@ -1,6 +1,6 @@
 import updateNotifier from "update-notifier";
 import chalk from "chalk";
-import pkg from "../package.json";
+const pkg = require("../package.json");
 const notifier = updateNotifier({
   pkg,
   updateCheckInterval: 1000 * 60 * 60 * 24 // 1 day
