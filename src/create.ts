@@ -21,7 +21,6 @@ export async function createProject(name: string) {
             name: 'preset',
             choices: [
               'React Electron (react, typescript, eslint, prettier)',
-              'Vue Electron (Vue, typescript, eslint, prettier)',
             ],
           },
         ])
