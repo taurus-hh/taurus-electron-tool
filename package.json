@@ -1,11 +1,18 @@
 {
-  "name": "taurus",
-  "version": "1.0.0",
+  "name": "taurus-electron",
+  "version": "1.0.0-alpha",
   "description": "A tool create Electron Application that based React Typescript",
   "main": "./dist/index.js",
   "bin": {
     "taurus": "./bin/index.js"
   },
+  "keywords": [
+    "React",
+    "electron",
+    "tool",
+    "kit",
+    "typescript"
+  ],
   "files": [
     "bin",
     "dist",
